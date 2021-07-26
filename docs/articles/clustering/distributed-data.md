@@ -172,8 +172,9 @@ There are several different HOCON settings, that can be used to configure distri
 - `role` used to limit expected DistributedData capability to nodes having that role. None by default.
 - `gossip-interval` tells replicator, how often replicas should be gossiped over the cluster. Default: *2 seconds*
 - `notify-subscribers-interval` tells, how often replicator subscribers should be notified with replica state changes. Default: *0.5 second*
-- `max-delta-elements` limits a maximum number of entries (key-value pairs) to be send in a single gossip information. If there are more modified entries waiting to be gossiped, they will be send in the next round. Default: *1000*
+- `max-delta-elements` limits a maximum number of entries (key-value pairs) to be send in a single gossip information. If there are more modified entries waiting to be gossiped, they will be send in the next round. Default: *500*
 - `use-dispatcher` can be used to specify custom replicator actor message dispatcher. By default it uses an actor system default dispatcher.
 - `pruning-interval` tells, how often replicator will check if pruning should be performed. Default: *30 seconds*
 - `max-pruning-dissemination` informs, what is the worst expected time for the pruning process to inform whole cluster about pruned node data. Default: *60 seconds*
 - `serializer-cache-time-to-live` is used by custom distributed data serializer to determine, for how long serialized replicas should be cached. When sending replica over multiple nodes, it will reuse data already serialized, if it was found in a cache. Default: *10 seconds*.
+- `recreate-on-failure` restarts the replicator if it suddenly stops (typically when durable store is used)
